@@ -28,7 +28,7 @@ class App extends Component {
     } else if(this.state.mode === 'read') {
         _title = this.state.contents[0].title;
         _desc = this.state.contents[0].desc;
-    }
+    } //COMMIT test
     return (
       <div className="App">
         {/* <Subject title={this.state.subject.title} 
