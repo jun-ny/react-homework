@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 
 class TOC extends Component {
+    shouldComponentUpdate(newProps, newState){    // return false -> render 출력 안 함, return true -> render 출력
+      if(this.props.data === newProps.data) {     //이전 값과 이후 값을 비교해서, 값이 바뀔 때만 render를 수정한다.
+        return false;
+      }
+      return true;
+    }
     render() {
-
       console.log('TOC render');
       var lists = [];
       var data = this.props.data;
