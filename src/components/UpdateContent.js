@@ -3,12 +3,13 @@ class UpdateContent extends Component{
     constructor(props) {     // props는 read only이기 때문에 가변적으로 사용할 수 있는 state를 사용한다
       super(props);
       this.state = {
+        id:this.props.data.id,
         title:this.props.data.title,
         desc:this.props.data.desc
       }
       this.inputFormHandler = this.inputFormHandler.bind(this); // .bind(this)를 주입시켜줌
     }
-    inputFormHandler(e) {
+    inputFormHandler(e) {     // e.target.name을 이용해 해당 데이터의 값을 가져와 줌
       this.setState({[e.target.name]:e.target.value});
     }
     render(){
@@ -21,10 +22,10 @@ class UpdateContent extends Component{
        onSubmit={function(e){
          e.preventDefault();
          
-         this.props.onSubmit(e.target.title.value, e.target.desc.value);
-       
-       }.bind(this)}
+         this.props.onSubmit(this.state.id, this.state.title, this.state.desc);
+}.bind(this)}
       >
+        <input type="hidden" name="id" value={this.state.id}></input>
         <p><input 
         type="text" 
         name="title"
